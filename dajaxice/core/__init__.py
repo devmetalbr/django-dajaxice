@@ -1,6 +1,6 @@
 from django.conf import settings
 
-from Dajaxice import Dajaxice, dajaxice_autodiscover
+from .Dajaxice import Dajaxice, dajaxice_autodiscover
 
 
 class DajaxiceConfig(object):
@@ -25,6 +25,10 @@ class DajaxiceConfig(object):
     @property
     def dajaxice_url(self):
         return r'^%s/' % self.DAJAXICE_MEDIA_PREFIX
+
+    @property
+    def dajaxice_path(self):
+        return r'%s/' % self.DAJAXICE_MEDIA_PREFIX
 
     @property
     def django_settings(self):

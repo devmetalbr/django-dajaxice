@@ -1,0 +1,6 @@
+[submodule "dajaxice/templates/JSON-js"]
+	path = dajaxice/templates/JSON-js
+	url = https://github.com/douglascrockford/JSON-js.git
+[submodule "dajaxice/templates/xmlhttprequest"]
+	path = dajaxice/templates/xmlhttprequest
+	url = https://github.com/ilinsky/xmlhttprequest.git

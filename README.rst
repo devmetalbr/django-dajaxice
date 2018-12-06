@@ -46,3 +46,10 @@ Project Aims
 
 Official site http://dajaxproject.com
 Documentation http://readthedocs.org/projects/django-dajaxice/
+
+This Fork
+---------
+
+Adds compatibility with Python 3.6 and Django 2.1.4 .
+
+Uses XMLHttpRequest.js and json2.js as git submodules.

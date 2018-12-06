@@ -164,9 +164,7 @@ LOGGING = {
     }
 }
 
-STATICFILES_FINDERS = ("django.contrib.staticfiles.finders.FileSystemFinder",
-                       "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-                       "dajaxice.finders.DajaxiceFinder")
+STATICFILES_FINDERS += ("dajaxice.finders.DajaxiceFinder", )
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
                                "django.core.context_processors.debug",

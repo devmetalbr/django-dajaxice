@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.8.0
+^^^^^^
+
+* Added python 3 and django 2.1 changes.
+
 0.7
 ^^^^^
 * Make ``django-dajaxice`` work with ``django 1.7``

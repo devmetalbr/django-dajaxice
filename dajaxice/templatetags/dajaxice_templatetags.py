@@ -4,6 +4,9 @@ from django import template
 from django.middleware.csrf import get_token
 from django.conf import settings
 from django.core.files.storage import get_storage_class
+from django.utils.safestring import mark_safe
+
+from dajaxice.core import dajaxice_config
 
 staticfiles_storage = get_storage_class(settings.STATICFILES_STORAGE)()
 
@@ -31,5 +34,25 @@ def dajaxice_js_import(context, csrf=True):
                     "_processors.request' to your TEMPLATE_CONTEXT_PROCESSORS "
                     "and render your views using a RequestContext.")
 
-    url = staticfiles_storage.url('dajaxice/dajaxice.core.js')
-    return '<script src="%s" type="text/javascript" charset="utf-8"></script>' % url
+    html = (
+        '<script src="{}" type="text/javascript" charset="utf-8"></script>\n'
+        .format(staticfiles_storage.url('dajaxice/dajaxice.core.js'))
+    )
+
+    if dajaxice_config.DAJAXICE_XMLHTTPREQUEST_JS_IMPORT:
+        html += (
+            '<!--[if lte IE 9]>\n'
+            '<script src="{}" type="text/javascript" charset="utf-8">'
+            '</script>\n'
+            '<![endif]-->\n'
+            .format(staticfiles_storage.url('xmlhttprequest/XMLHttpRequest.js'))
+        )
+
+    if dajaxice_config.DAJAXICE_JSON2_JS_IMPORT:
+        html += (
+            '<script src="{}" type="text/javascript" charset="utf-8">'
+            '</script>\n'
+            .format(staticfiles_storage.url('JSON-js/json2.js'))
+        )
+
+    return mark_safe(html)
