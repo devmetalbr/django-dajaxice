@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='django-dajaxice-py3dj2',
-    version='0.8.0',
+    version='0.8.1',
     author='Antonio Tomasic',
     author_email='atomasic@gmail.com',
     description='Agnostic and easy to use ajax library for django',
@@ -18,7 +18,7 @@ setup(
                       "unobtrusive standard-compliant (W3C) XMLHttpRequest "
                       "1.0 object."),
     install_requires=[
-        'Django>=2.1.4'
+        'Django>=2.1.3'
     ],
     classifiers=['Development Status :: 4 - Beta',
                 'Environment :: Web Environment',
