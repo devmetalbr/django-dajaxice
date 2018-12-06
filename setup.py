@@ -1,8 +1,20 @@
+import os
 from distutils.core import setup
+from subprocess import check_call
+
+from setuptools.command.develop import develop
+
+
+class CloneGitSubmodules(develop):
+    def run(self):
+        if os.path.exists('.git'):
+            check_call(['git', 'submodule', 'update', '--init'])
+        super(CloneGitSubmodules, self).__init__()
+
 
 setup(
     name='django-dajaxice-py3dj2',
-    version='0.8.1',
+    version='0.8.2',
     author='Antonio Tomasic',
     author_email='atomasic@gmail.com',
     description='Agnostic and easy to use ajax library for django',
@@ -28,5 +40,6 @@ setup(
                 'Operating System :: OS Independent',
                 'Programming Language :: Python',
                 'Topic :: Utilities'],
-    python_requires='>=3.6.7'
+    python_requires='>=3.6.7',
+    cmd_class={"develop": CloneGitSubmodules}
 )
