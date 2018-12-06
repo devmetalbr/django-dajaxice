@@ -1,10 +1,11 @@
-from django.conf.urls.defaults import *
+from django.conf.urls import include
+from django.urls import path
 
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 dajaxice_autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = [
     #Dajaxice URLS
-    url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
-)
+    path(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
+]

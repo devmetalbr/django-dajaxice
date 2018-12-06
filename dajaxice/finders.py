@@ -2,13 +2,13 @@ import os
 import tempfile
 
 from django.contrib.staticfiles import finders
-from django.template import Context
-from django.template.loader import get_template
 from django.core.exceptions import SuspiciousOperation
+from django.template.loader import get_template
 
 
 class VirtualStorage(finders.FileSystemStorage):
-    """" Mock a FileSystemStorage to build tmp files on demand."""
+    """" Mock a FileSystemStorage to build tmp files on demand.
+    """
 
     def __init__(self, *args, **kwargs):
         self._files_cache = {}
@@ -54,21 +54,45 @@ class VirtualStorage(finders.FileSystemStorage):
         try:
             path = self.get_or_create_file(name)
         except ValueError:
-            raise SuspiciousOperation("Attempted access to '%s' denied." % name)
+            raise SuspiciousOperation(
+                "Attempted access to '%s' denied." % name
+            )
         return os.path.normpath(path)
 
 
 class DajaxiceStorage(VirtualStorage):
-
-    files = {os.path.join('dajaxice', 'dajaxice.core.js'): 'dajaxice_core_js'}
+    files = {
+        os.path.join('dajaxice', 'dajaxice.core.js'):
+            'dajaxice_core_js',
+        os.path.join('xmlhttprequest', 'XMLHttpRequest.js'):
+            'xml_http_request',
+        os.path.join('JSON-js', 'json2.js'):
+            'json2_js'
+    }
 
     def dajaxice_core_js(self):
         from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
         dajaxice_autodiscover()
 
-        c = Context({'dajaxice_config': dajaxice_config})
-        return get_template(os.path.join('dajaxice', 'dajaxice.core.js')).render(c)
+        return (
+            get_template(os.path.join('dajaxice', 'dajaxice.core.js'))
+            .render({
+                'dajaxice_config': dajaxice_config
+            })
+        )
+
+    def xml_http_request(self):
+        return (
+            get_template(os.path.join('xmlhttprequest', 'XMLHttpRequest.js'))
+            .render()
+        )
+
+    def json2_js(self):
+        return (
+            get_template(os.path.join('JSON-js', 'json2.js'))
+            .render()
+        )
 
 
 class DajaxiceFinder(finders.BaseStorageFinder):

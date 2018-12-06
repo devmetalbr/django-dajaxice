@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.6.0
+^^^^^^
+
+* Added python 3 and django 2.1 changes.
+
 0.5.5
 ^^^^^
 * Return XMLHttpRequest from concreate functions as well as from function call.

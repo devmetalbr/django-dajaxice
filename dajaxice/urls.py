@@ -1,7 +1,9 @@
-from django.conf.urls.defaults import *
+from django.urls import path
+
 from .views import DajaxiceRequest
 
-urlpatterns = patterns('dajaxice.views',
-    url(r'^(.+)/$', DajaxiceRequest.as_view(), name='dajaxice-call-endpoint'),
-    url(r'', DajaxiceRequest.as_view(), name='dajaxice-endpoint'),
-)
+
+urlpatterns = [
+    path(r'(.+)/', DajaxiceRequest.as_view(), name='dajaxice-call-endpoint'),
+    path(r'', DajaxiceRequest.as_view(), name='dajaxice-endpoint'),
+]

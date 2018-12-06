@@ -1,12 +1,12 @@
 from distutils.core import setup
 
 setup(
-    name='django-dajaxice',
-    version='0.5.5',
-    author='Jorge Bastida',
-    author_email='me@jorgebastida.com',
+    name='django-dajaxice-py3dj2',
+    version='0.6.0',
+    author='Antonio Tomasic',
+    author_email='atomasic@gmail.com',
     description='Agnostic and easy to use ajax library for django',
-    url='http://dajaxproject.com',
+    url='https://github.com/atomasic/django-dajaxice',
     license='BSD',
     packages=['dajaxice',
               'dajaxice.templatetags',
@@ -18,7 +18,7 @@ setup(
                       "unobtrusive standard-compliant (W3C) XMLHttpRequest "
                       "1.0 object."),
     install_requires=[
-        'Django>=1.3'
+        'Django>=2.1.4'
     ],
     classifiers=['Development Status :: 4 - Beta',
                 'Environment :: Web Environment',
@@ -27,5 +27,6 @@ setup(
                 'License :: OSI Approved :: BSD License',
                 'Operating System :: OS Independent',
                 'Programming Language :: Python',
-                'Topic :: Utilities']
+                'Topic :: Utilities'],
+    python_requires='>=3.6.7'
 )
