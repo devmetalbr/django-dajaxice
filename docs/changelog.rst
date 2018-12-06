@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6.0
+0.8.0
 ^^^^^^
 
 * Added python 3 and django 2.1 changes.
