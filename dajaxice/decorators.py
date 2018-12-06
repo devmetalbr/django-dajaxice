@@ -33,7 +33,6 @@ def dajaxice_register(*dargs, **dkwargs):
     def ajax_function(request):
         ...
     """
-
     if len(dargs) and not dkwargs:
         function = dargs[0]
         dajaxice_functions.register(function)
